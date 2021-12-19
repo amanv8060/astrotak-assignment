@@ -1,0 +1,19 @@
+#!/bin/bash
+
+dart_files=$(find ./ -type f -name "*.dart")
+
+[ -z "$dart_files" ] && exit 0
+
+function formatCode() {
+  
+  dart format $dart_files
+  return 0
+}
+
+formatCode || fail=yes
+
+[ -z "$fail" ] || exit 1
+
+echo 'all files formatted'
+
+exit 0
