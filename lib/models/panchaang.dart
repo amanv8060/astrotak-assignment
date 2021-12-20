@@ -3,11 +3,12 @@ import 'package:app/models/panchaang/nakshatra.dart';
 import 'package:app/models/panchaang/nakshool.dart';
 import 'package:app/models/panchaang/tithi.dart';
 import 'package:app/models/panchaang/yog.dart';
+import 'package:equatable/equatable.dart';
 
 import 'panchaang/hindu_maah.dart';
 import 'panchaang/muhurta.dart';
 
-class Panchang {
+class Panchang with EquatableMixin {
   Panchang({
     required this.day,
     required this.sunrise,
@@ -137,4 +138,41 @@ class Panchang {
         "guliKaal": guliKaal.toJson(),
         "yamghant_kaal": yamghantKaal.toJson(),
       };
+
+  @override
+  bool? get stringify => true;
+
+  @override
+  List<Object?> get props => [
+        day,
+        sunrise,
+        sunset,
+        moonrise,
+        moonset,
+        vedicSunrise,
+        vedicSunset,
+        tithi,
+        nakshatra,
+        yog,
+        karan,
+        hinduMaah,
+        paksha,
+        ritu,
+        sunSign,
+        moonSign,
+        ayana,
+        panchangYog,
+        vikramSamvat,
+        shakaSamvat,
+        vkramSamvatName,
+        shakaSamvatName,
+        dishaShool,
+        dishaShoolRemedies,
+        nakShool,
+        moonNivas,
+        abhijitMuhurta,
+        rahukaal,
+        guliKaal,
+        yamghantKaal
+      ];
 }

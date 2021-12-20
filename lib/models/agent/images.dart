@@ -1,6 +1,7 @@
-import 'package:app/models/agent/api_image.dart';
+import 'package:equatable/equatable.dart';
+import 'api_image.dart';
 
-class Images {
+class Images with EquatableMixin {
   Images({
     required this.small,
     required this.large,
@@ -22,4 +23,10 @@ class Images {
         "large": large.toJson(),
         "medium": medium.toJson(),
       };
+
+  @override
+  List<Object?> get props => [small, large, medium];
+
+  @override
+  bool? get stringify => true;
 }

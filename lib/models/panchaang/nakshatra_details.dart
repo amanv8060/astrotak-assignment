@@ -1,4 +1,6 @@
-class NakshatraDetails {
+import 'package:equatable/equatable.dart';
+
+class NakshatraDetails with EquatableMixin {
   NakshatraDetails({
     required this.nakNumber,
     required this.nakName,
@@ -33,4 +35,11 @@ class NakshatraDetails {
         "special": special,
         "summary": summary,
       };
+
+  @override
+  List<Object?> get props =>
+      [nakNumber, nakName, ruler, deity, special, summary];
+
+  @override
+  bool? get stringify => true;
 }

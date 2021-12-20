@@ -1,4 +1,6 @@
-class ApiImage {
+import 'package:equatable/equatable.dart';
+
+class ApiImage with EquatableMixin {
   ApiImage({
     required this.imageUrl,
     required this.id,
@@ -16,4 +18,10 @@ class ApiImage {
         "imageUrl": imageUrl,
         "id": id,
       };
+
+  @override
+  List<Object?> get props => [imageUrl, id];
+
+  @override
+  bool? get stringify => true;
 }

@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 import 'end_time.dart';
 import 'karan_details.dart';
 
-class Karan {
+class Karan with EquatableMixin {
   Karan({
     required this.details,
     required this.endTime,
@@ -23,4 +25,9 @@ class Karan {
         "end_time": endTime.toJson(),
         "end_time_ms": endTimeMs,
       };
+  @override
+  List<Object?> get props => [details, endTime, endTimeMs];
+
+  @override
+  bool? get stringify => true;
 }

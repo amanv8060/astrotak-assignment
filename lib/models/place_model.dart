@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-class Place {
+import 'package:equatable/equatable.dart';
+
+class Place with EquatableMixin {
   Place({
     required this.placeName,
     required this.placeId,
@@ -18,4 +20,10 @@ class Place {
         "placeName": placeName,
         "placeId": placeId,
       };
+
+  @override
+  List<Object?> get props => [placeName, placeId];
+
+  @override
+  bool? get stringify => true;
 }

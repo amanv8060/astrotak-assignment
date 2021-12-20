@@ -1,6 +1,7 @@
-import 'package:app/models/agent/slot.dart';
+import 'package:equatable/equatable.dart';
+import 'slot.dart';
 
-class Availability {
+class Availability with EquatableMixin {
   Availability({
     required this.days,
     required this.slot,
@@ -18,4 +19,9 @@ class Availability {
         "days": List<dynamic>.from(days.map((x) => x)),
         "slot": slot.toJson(),
       };
+  @override
+  List<Object?> get props => [days, slot];
+
+  @override
+  bool? get stringify => true;
 }

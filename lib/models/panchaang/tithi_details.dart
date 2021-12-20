@@ -1,4 +1,6 @@
-class TithiDetails {
+import 'package:equatable/equatable.dart';
+
+class TithiDetails with EquatableMixin {
   TithiDetails({
     required this.tithiNumber,
     required this.tithiName,
@@ -28,4 +30,10 @@ class TithiDetails {
         "summary": summary,
         "deity": deity,
       };
+
+  @override
+  List<Object?> get props => [tithiNumber, tithiName, special, summary, deity];
+
+  @override
+  bool? get stringify => true;
 }

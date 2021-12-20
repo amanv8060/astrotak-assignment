@@ -1,8 +1,8 @@
-import 'package:app/models/panchaang/nakshatra_details.dart';
-
+import 'nakshatra_details.dart';
+import 'package:equatable/equatable.dart';
 import 'end_time.dart';
 
-class Nakshatra {
+class Nakshatra with EquatableMixin {
   Nakshatra({
     required this.details,
     required this.endTime,
@@ -24,4 +24,10 @@ class Nakshatra {
         "end_time": endTime.toJson(),
         "end_time_ms": endTimeMs,
       };
+
+  @override
+  List<Object?> get props => [details, endTime, endTimeMs];
+
+  @override
+  bool? get stringify => true;
 }

@@ -1,4 +1,6 @@
-class YogDetails {
+import 'package:equatable/equatable.dart';
+
+class YogDetails with EquatableMixin {
   YogDetails({
     required this.yogNumber,
     required this.yogName,
@@ -24,4 +26,10 @@ class YogDetails {
         "special": special,
         "meaning": meaning,
       };
+
+  @override
+  List<Object?> get props => [yogNumber, yogName, special, meaning];
+
+  @override
+  bool? get stringify => true;
 }

@@ -1,4 +1,6 @@
-class HinduMaah {
+import 'package:equatable/equatable.dart';
+
+class HinduMaah with EquatableMixin {
   HinduMaah({
     required this.adhikStatus,
     required this.purnimanta,
@@ -28,4 +30,11 @@ class HinduMaah {
         "amanta_id": amantaId,
         "purnimanta_id": purnimantaId,
       };
+
+  @override
+  List<Object?> get props =>
+      [adhikStatus, purnimanta, amanta, amantaId, purnimantaId];
+
+  @override
+  bool? get stringify => true;
 }

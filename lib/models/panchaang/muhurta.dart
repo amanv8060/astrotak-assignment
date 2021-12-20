@@ -1,4 +1,6 @@
-class Muhurta {
+import 'package:equatable/equatable.dart';
+
+class Muhurta with EquatableMixin {
   Muhurta({
     required this.start,
     required this.end,
@@ -16,4 +18,9 @@ class Muhurta {
         "start": start,
         "end": end,
       };
+  @override
+  List<Object?> get props => [start, end];
+
+  @override
+  bool? get stringify => true;
 }

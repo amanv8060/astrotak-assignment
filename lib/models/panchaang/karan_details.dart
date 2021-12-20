@@ -1,4 +1,6 @@
-class KaranDetails {
+import 'package:equatable/equatable.dart';
+
+class KaranDetails with EquatableMixin {
   KaranDetails({
     required this.karanNumber,
     required this.karanName,
@@ -24,4 +26,10 @@ class KaranDetails {
         "special": special,
         "deity": deity,
       };
+
+  @override
+  List<Object?> get props => [karanNumber, karanName, special, deity];
+
+  @override
+  bool? get stringify => true;
 }

@@ -1,4 +1,6 @@
-class Skill {
+import 'package:equatable/equatable.dart';
+
+class Skill with EquatableMixin {
   Skill({
     required this.id,
     required this.name,
@@ -20,4 +22,10 @@ class Skill {
         "name": name,
         "description": description,
       };
+
+  @override
+  List<Object?> get props => [id, name, description];
+
+  @override
+  bool? get stringify => true;
 }

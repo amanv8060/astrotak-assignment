@@ -1,4 +1,6 @@
-class NakShool {
+import 'package:equatable/equatable.dart';
+
+class NakShool with EquatableMixin {
   NakShool({
     required this.direction,
     required this.remedies,
@@ -16,4 +18,10 @@ class NakShool {
         "direction": direction,
         "remedies": remedies,
       };
+
+  @override
+  List<Object?> get props => [direction, remedies];
+
+  @override
+  bool? get stringify => true;
 }

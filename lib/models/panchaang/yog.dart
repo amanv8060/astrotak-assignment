@@ -1,8 +1,8 @@
-import 'package:app/models/panchaang/yog_details.dart';
-
+import 'package:equatable/equatable.dart';
+import 'yog_details.dart';
 import 'end_time.dart';
 
-class Yog {
+class Yog with EquatableMixin {
   Yog({
     required this.details,
     required this.endTime,
@@ -24,4 +24,10 @@ class Yog {
         "end_time": endTime.toJson(),
         "end_time_ms": endTimeMs,
       };
+
+  @override
+  List<Object?> get props => [details, endTime, endTimeMs];
+
+  @override
+  bool? get stringify => true;
 }

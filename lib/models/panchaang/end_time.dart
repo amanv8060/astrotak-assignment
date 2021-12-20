@@ -1,4 +1,6 @@
-class EndTime {
+import 'package:equatable/equatable.dart';
+
+class EndTime with EquatableMixin {
   EndTime({
     required this.hour,
     required this.minute,
@@ -20,4 +22,10 @@ class EndTime {
         "minute": minute,
         "second": second,
       };
+
+  @override
+  List<Object?> get props => [hour, minute, second];
+
+  @override
+  bool? get stringify => true;
 }

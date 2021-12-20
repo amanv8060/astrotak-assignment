@@ -1,9 +1,11 @@
+import 'package:equatable/equatable.dart';
+
 import 'agent/skill.dart';
 import 'agent/availbility.dart';
 import 'agent/images.dart';
 import 'agent/language.dart';
 
-class Agent {
+class Agent with EquatableMixin {
   Agent({
     required this.id,
     required this.urlSlug,
@@ -94,4 +96,31 @@ class Agent {
         "images": images.toJson(),
         "availability": availability.toJson(),
       };
+
+  @override
+  List<Object?> get props => [
+        id,
+        urlSlug,
+        namePrefix,
+        firstName,
+        lastName,
+        aboutMe,
+        profliePicUrl,
+        experience,
+        languages,
+        minimumCallDuration,
+        minimumCallDurationCharges,
+        additionalPerMinuteCharges,
+        isAvailable,
+        rating,
+        skills,
+        isOnCall,
+        freeMinutes,
+        additionalMinute,
+        images,
+        availability
+      ];
+
+  @override
+  bool? get stringify => true;
 }

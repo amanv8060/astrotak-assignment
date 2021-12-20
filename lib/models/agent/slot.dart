@@ -1,4 +1,6 @@
-class Slot {
+import 'package:equatable/equatable.dart';
+
+class Slot with EquatableMixin {
   Slot({
     required this.toFormat,
     required this.fromFormat,
@@ -24,4 +26,9 @@ class Slot {
         "from": from,
         "to": to,
       };
+
+  @override
+  List<Object?> get props => [toFormat, fromFormat, from, to];
+  @override
+  bool? get stringify => true;
 }
