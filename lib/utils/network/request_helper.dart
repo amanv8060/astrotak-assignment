@@ -36,12 +36,9 @@ class RequestHelper {
               await _client.put(path, data: data, queryParameters: queryParams);
           break;
       }
-      print(response.data);
-      return ApiResponse(response.statusCode == expectedStatusCode,
-          NetworkCommon.decodeResponse(response));
+      return ApiResponse.fromJson(NetworkCommon.decodeResponse(response));
     } on DioError catch (e) {
-      return ApiResponse.error(
-          NetworkCommon.decodeResponse(e.response)["message"]);
+      return ApiResponse.fromJson(NetworkCommon.decodeResponse(e.response));
     }
   }
 }

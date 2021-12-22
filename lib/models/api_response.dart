@@ -1,32 +1,36 @@
 import 'package:app/utils/constants.dart';
 
 class ApiResponse<T> {
+  ApiResponse({
+    required this.httpStatus,
+    required this.httpStatusCode,
+    required this.success,
+    required this.message,
+    this.apiName,
+    this.data,
+  });
+
+  String httpStatus;
+  int httpStatusCode;
+  bool success;
+  String message;
+  String? apiName;
   T? data;
-  late bool status;
-  String? message;
 
-  factory ApiResponse(bool status, T data) {
-    if (status) {
-      return ApiResponse.completed(data);
-    } else {
-      return ApiResponse.error(data);
-    }
-  }
+  factory ApiResponse.fromJson(Map<String, dynamic> json) => ApiResponse(
+      httpStatus: json["httpStatus"] ?? "INTERNAL_SERVER_ERROR",
+      httpStatusCode: json["httpStatusCode"] ?? "500",
+      success: json["success"] ?? "false",
+      message: json["message"] ?? Constants.networkExceptionText,
+      apiName: json["apiName"],
+      data: json["data"]);
 
-  ApiResponse.completed(this.data) {
-    status = true;
-  }
-
-  ApiResponse.error(dynamic message) {
-    status = false;
-    if (message is String) {
-      if (message.isNotEmpty) {
-        this.message = message;
-      } else {
-        this.message = Constants.unknownExceptionText;
-      }
-    } else if (message is Map && message.containsKey("detail")) {
-      this.message = message["detail"] ?? Constants.unknownExceptionText;
-    }
-  }
+  Map<String, dynamic> toJson() => {
+        "httpStatus": httpStatus,
+        "httpStatusCode": httpStatusCode,
+        "success": success,
+        "message": message,
+        "apiName": apiName,
+        "data": data
+      };
 }

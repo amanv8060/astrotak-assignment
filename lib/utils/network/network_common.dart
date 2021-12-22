@@ -73,12 +73,11 @@ class NetworkCommon {
   static dynamic decodeResponse(d) {
     var response = d as Response?;
 
-    if (response == null || response.statusCode! >= 500) {
-      // APIResponse class handles empty messages
+    if (response == null) {
       InfoToast(Constants.networkExceptionText);
-      return;
+      //ApiResponse Class handles empty map
+      return {};
     }
-
     final dynamic jsonBody = response.data;
 
     if (jsonBody is String) {
@@ -86,6 +85,7 @@ class NetworkCommon {
         return _decoder.convert(jsonBody);
       } on FormatException catch (e) {
         CustomLogger.instance.error(e.toString());
+        return {"message": "Format Exception  Occurred"};
       }
     } else {
       return jsonBody;

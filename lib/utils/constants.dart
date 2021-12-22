@@ -1,4 +1,4 @@
-import 'package:flutter_config/flutter_config.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Constants {
   //Network Constants
@@ -7,7 +7,7 @@ class Constants {
   static const String unknownExceptionText =
       "Something went wrong. Please try again later";
 
-  static String? apiEndPoint = FlutterConfig.get("HOST");
+  static String? apiEndPoint = dotenv.env["HOST"];
 
   /*
     API-HTTP Constants

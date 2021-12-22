@@ -1,13 +1,12 @@
 import 'package:app/app.dart';
 import 'package:app/utils/get_it/locator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_config/flutter_config.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //loading env variables
-  await FlutterConfig.loadEnvVariables();
+  await dotenv.load(fileName: "assets/.env");
   setupLocator();
 
   runApp(AstroTak());
