@@ -7,7 +7,7 @@ class Constants {
   static const String unknownExceptionText =
       "Something went wrong. Please try again later";
 
-  static String apiEndPoint = FlutterConfig.get("HOST");
+  static String? apiEndPoint = FlutterConfig.get("HOST");
 
   /*
     API-HTTP Constants

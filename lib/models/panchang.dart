@@ -1,12 +1,11 @@
-import 'package:app/models/panchaang/karan.dart';
-import 'package:app/models/panchaang/nakshatra.dart';
-import 'package:app/models/panchaang/nakshool.dart';
-import 'package:app/models/panchaang/tithi.dart';
-import 'package:app/models/panchaang/yog.dart';
+import 'package:app/models/panchang/hindu_maah.dart';
+import 'package:app/models/panchang/karan.dart';
+import 'package:app/models/panchang/muhurta.dart';
+import 'package:app/models/panchang/nakshatra.dart';
+import 'package:app/models/panchang/nakshool.dart';
+import 'package:app/models/panchang/tithi.dart';
+import 'package:app/models/panchang/yog.dart';
 import 'package:equatable/equatable.dart';
-
-import 'panchaang/hindu_maah.dart';
-import 'panchaang/muhurta.dart';
 
 class Panchang with EquatableMixin {
   Panchang({

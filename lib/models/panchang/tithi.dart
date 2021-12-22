@@ -1,4 +1,4 @@
-import 'package:app/models/panchaang/tithi_details.dart';
+import 'package:app/models/panchang/tithi_details.dart';
 import 'package:equatable/equatable.dart';
 
 import 'end_time.dart';
