@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class SizeConfig {
   //ignore: constant_identifier_names
   static const double ASSUMED_SCREEN_HEIGHT = 760.0;

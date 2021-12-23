@@ -34,13 +34,13 @@ class Agent with EquatableMixin {
   String? namePrefix;
   String firstName;
   String lastName;
-  String aboutMe;
+  String? aboutMe;
   String? profliePicUrl;
-  int experience;
+  double experience;
   List<Language> languages;
   int minimumCallDuration;
-  int minimumCallDurationCharges;
-  int additionalPerMinuteCharges;
+  double minimumCallDurationCharges;
+  double additionalPerMinuteCharges;
   bool isAvailable;
   double? rating;
   List<Skill> skills;
@@ -48,7 +48,7 @@ class Agent with EquatableMixin {
   int freeMinutes;
   int additionalMinute;
   Images images;
-  Availability availability;
+  Availability? availability;
 
   factory Agent.fromJson(Map<String, dynamic> json) => Agent(
         id: json["id"],
@@ -71,7 +71,9 @@ class Agent with EquatableMixin {
         freeMinutes: json["freeMinutes"],
         additionalMinute: json["additionalMinute"],
         images: Images.fromJson(json["images"]),
-        availability: Availability.fromJson(json["availability"]),
+        availability: json["availability"] == null
+            ? null
+            : Availability.fromJson(json["availability"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -94,7 +96,7 @@ class Agent with EquatableMixin {
         "freeMinutes": freeMinutes,
         "additionalMinute": additionalMinute,
         "images": images.toJson(),
-        "availability": availability.toJson(),
+        "availability": availability?.toJson(),
       };
 
   @override

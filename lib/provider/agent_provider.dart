@@ -29,6 +29,10 @@ class AgentProvider extends ChangeNotifier {
   /// to make agent api related calls
   final AgentRepository _agentRepository = AgentRepository();
 
+  AgentProvider() {
+    fetchAgents();
+  }
+
   //Todo: Write this function
   /// This functions updates [agents] according to the option selected by a user ,
   /// If user resets the option , we reinitialize the list , else we sort accordingly
@@ -89,9 +93,11 @@ class AgentProvider extends ChangeNotifier {
         error = Constants.unknownExceptionText;
         loading = false;
         notifyListeners();
+        return;
       }
       List<dynamic> data = response.data as List;
-      agents = data.map((e) => Agent.fromJson(e)).toList();
+      _agents = data.map((e) => Agent.fromJson(e)).toList();
+      agents = _agents;
     } else {
       error = response.message;
     }

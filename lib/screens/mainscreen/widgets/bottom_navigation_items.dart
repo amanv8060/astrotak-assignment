@@ -1,3 +1,4 @@
+import 'package:app/utils/size_config.dart';
 import 'package:app/utils/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -6,14 +7,14 @@ List<BottomNavigationBarItem> getBottomNavBarItems() {
     BottomNavigationBarItem(
       icon: Image.asset(
         "assets/home.png",
-        width: 24,
-        height: 24,
+        width: SizeConfig.fitToWidth(24),
+        height: SizeConfig.fitToHeight(24),
         color: AppTheme.greyColor,
       ),
       activeIcon: Image.asset(
         "assets/home.png",
-        width: 24,
-        height: 24,
+        width: SizeConfig.fitToWidth(24),
+        height: SizeConfig.fitToHeight(24),
         color: AppTheme.primaryColor,
       ),
       label: "Home",
@@ -21,13 +22,13 @@ List<BottomNavigationBarItem> getBottomNavBarItems() {
     BottomNavigationBarItem(
       icon: Image.asset(
         "assets/talk.png",
-        width: 24,
-        height: 24,
+        width: SizeConfig.fitToWidth(24),
+        height: SizeConfig.fitToHeight(24),
       ),
       activeIcon: Image.asset(
         "assets/talk.png",
-        width: 24,
-        height: 24,
+        width: SizeConfig.fitToWidth(24),
+        height: SizeConfig.fitToHeight(24),
         color: AppTheme.primaryColor,
       ),
       label: 'Talk to Astrologer',
@@ -35,13 +36,13 @@ List<BottomNavigationBarItem> getBottomNavBarItems() {
     BottomNavigationBarItem(
       icon: Image.asset(
         "assets/ask.png",
-        width: 24,
-        height: 24,
+        width: SizeConfig.fitToWidth(24),
+        height: SizeConfig.fitToHeight(24),
       ),
       activeIcon: Image.asset(
         "assets/ask.png",
-        width: 24,
-        height: 24,
+        width: SizeConfig.fitToWidth(24),
+        height: SizeConfig.fitToHeight(24),
         color: AppTheme.primaryColor,
       ),
       label: 'Ask Question',
@@ -49,13 +50,13 @@ List<BottomNavigationBarItem> getBottomNavBarItems() {
     BottomNavigationBarItem(
       icon: Image.asset(
         "assets/reports.png",
-        width: 24,
-        height: 24,
+        width: SizeConfig.fitToWidth(24),
+        height: SizeConfig.fitToHeight(24),
       ),
       activeIcon: Image.asset(
         "assets/reports.png",
-        width: 24,
-        height: 24,
+        width: SizeConfig.fitToWidth(24),
+        height: SizeConfig.fitToHeight(24),
         color: AppTheme.primaryColor,
       ),
       label: 'Reports',
