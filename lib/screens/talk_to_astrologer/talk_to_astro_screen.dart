@@ -1,6 +1,6 @@
 import 'package:app/provider/agent_provider.dart';
-import 'package:app/screens/talktoastrologer/widgets/talk_to_astrologer_body.dart';
-import 'package:app/screens/talktoastrologer/widgets/talk_to_astrologer_header.dart';
+import 'package:app/screens/talk_to_astrologer/widgets/talk_to_astrologer_body.dart';
+import 'package:app/screens/talk_to_astrologer/widgets/talk_to_astrologer_header.dart';
 import 'package:app/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

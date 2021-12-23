@@ -1,5 +1,5 @@
 import 'package:app/provider/agent_provider.dart';
-import 'package:app/screens/talktoastrologer/widgets/agent_card.dart';
+import 'package:app/screens/talk_to_astrologer/widgets/agent_card.dart';
 import 'package:app/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';

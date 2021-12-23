@@ -4,7 +4,7 @@ import 'package:app/screens/mainscreen/widgets/app_bar.dart';
 import 'package:app/screens/mainscreen/widgets/bottom_navigation_items.dart';
 import 'package:app/screens/panchang/panchang_screen.dart';
 import 'package:app/screens/reports/reports.dart';
-import 'package:app/screens/talktoastrologer/talk_to_astro_screen.dart';
+import 'package:app/screens/talk_to_astrologer/talk_to_astro_screen.dart';
 import 'package:app/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -45,8 +45,10 @@ class AgentProvider extends ChangeNotifier {
   }
 
   ///Sorts the agent list in the given order
-  sort(SortOrder order) {
-    sortOrder = order;
+  sort() {
+    if (sortOrder == null) {
+      return;
+    }
     sortAgents(agents, sortOrder!);
     notifyListeners();
   }

@@ -1,6 +1,8 @@
 import 'package:app/provider/agent_provider.dart';
+import 'package:app/screens/talk_to_astrologer/widgets/sort_menu.dart';
 import 'package:app/utils/size_config.dart';
 import 'package:app/utils/theme/app_theme.dart';
+import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -59,16 +61,18 @@ class _TalkToAstrologerHeaderState extends State<TalkToAstrologerHeader> {
                   ),
                   onPressed: () {},
                 ),
-                IconButton(
-                  padding: const EdgeInsets.all(0),
-                  icon: Image.asset(
-                    'assets/sort.png',
-                    width: SizeConfig.fitToWidth(20),
-                    height: SizeConfig.fitToHeight(20),
-                    fit: BoxFit.fill,
-                  ),
-                  onPressed: () {},
-                )
+                CustomPopupMenu(
+                    child: Image.asset(
+                      'assets/sort.png',
+                      width: SizeConfig.fitToWidth(20),
+                      height: SizeConfig.fitToHeight(20),
+                      fit: BoxFit.fill,
+                    ),
+                    menuBuilder: () => ChangeNotifierProvider.value(
+                          value: Provider.of<AgentProvider>(context),
+                          child: const SortMenu(),
+                        ),
+                    pressType: PressType.singleClick)
               ],
             )
           ],

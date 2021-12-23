@@ -1,6 +1,6 @@
 import 'package:app/models/agent.dart';
-import 'package:app/screens/talktoastrologer/functions/agent_language.dart';
-import 'package:app/screens/talktoastrologer/functions/agent_skills.dart';
+import 'package:app/screens/talk_to_astrologer/functions/agent_language.dart';
+import 'package:app/screens/talk_to_astrologer/functions/agent_skills.dart';
 import 'package:app/utils/constants.dart';
 import 'package:app/utils/logging/info_toast.dart';
 import 'package:app/utils/size_config.dart';
