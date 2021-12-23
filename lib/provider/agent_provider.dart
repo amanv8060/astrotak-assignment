@@ -1,6 +1,7 @@
 import 'package:app/models/agent.dart';
 import 'package:app/models/api_response.dart';
 import 'package:app/repository/agent_repository.dart';
+import 'package:app/screens/talk_to_astrologer/functions/filter_agents.dart';
 import 'package:app/utils/constants.dart';
 import 'package:app/utils/logging/custom_logger.dart';
 import 'package:app/utils/sort_agents.dart';
@@ -26,7 +27,7 @@ class AgentProvider extends ChangeNotifier {
   ///Stores on what filters the current list is filtered
   ///Structure
   ///{
-  ///"language" : List<String>
+  ///"languages" : List<String>
   ///"skills" : List<String>
   ///}
   Map<String, dynamic> filterParams = {};
@@ -44,15 +45,20 @@ class AgentProvider extends ChangeNotifier {
     fetchAgents();
   }
 
-  //Todo: Write this function
   /// This functions updates [agents] according to the option selected by a user ,
   /// If user resets the option , we reinitialize the list , else we sort accordingly
-  filterAgents(Map<String, dynamic> params) async {
+  filter(Map<String, dynamic> params) async {
     filterParams = params;
     if (params.isEmpty) {
       refreshList();
-      notifyListeners();
-    } else {}
+    } else {
+      if ((params["languages"] == null || params["languages"].length == 0) &&
+          (params["skills"] == null || params["skills"].length == 0)) {
+        refreshList();
+      } else {
+        agents = filterAgents(agents, params);
+      }
+    }
     notifyListeners();
   }
 
@@ -95,7 +101,7 @@ class AgentProvider extends ChangeNotifier {
         .where((element) =>
             element.getFormattedName().toLowerCase().contains(toSearch))
         .toList();
-    notifyListeners();
+    filter(filterParams);
   }
 
   void fetchAgents() async {

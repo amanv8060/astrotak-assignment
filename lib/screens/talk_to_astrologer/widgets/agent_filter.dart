@@ -57,7 +57,7 @@ class _AgentFilterState extends State<AgentFilter> {
             ),
           ),
           onTap: () {
-            Provider.of<AgentProvider>(context, listen: false).filterAgents({});
+            Provider.of<AgentProvider>(context, listen: false).filter({});
             Navigator.pop(context);
           },
         )
@@ -90,7 +90,7 @@ class _AgentFilterState extends State<AgentFilter> {
               selectedColorItem: AppTheme.primaryColor,
               backgroundColorItem: AppTheme.greyColor),
           onItemSelected: (values) {
-            Provider.of<AgentProvider>(context, listen: false).filterAgents({
+            Provider.of<AgentProvider>(context, listen: false).filter({
               "languages": _languageController.selectedItem,
               "skills": _skillsController.selectedItem
             });
@@ -125,7 +125,7 @@ class _AgentFilterState extends State<AgentFilter> {
               selectedColorItem: AppTheme.primaryColor,
               backgroundColorItem: AppTheme.greyColor),
           onItemSelected: (values) {
-            Provider.of<AgentProvider>(context, listen: false).filterAgents({
+            Provider.of<AgentProvider>(context, listen: false).filter({
               "languages": _languageController.selectedItem,
               "skills": _skillsController.selectedItem
             });
@@ -149,7 +149,7 @@ class _AgentFilterState extends State<AgentFilter> {
           ),
           style: ElevatedButton.styleFrom(primary: AppTheme.primaryColor),
           onPressed: () {
-            Provider.of<AgentProvider>(context, listen: false).filterAgents({
+            Provider.of<AgentProvider>(context, listen: false).filter({
               "languages": _languageController.selectedItem,
               "skills": _skillsController.selectedItem
             });
