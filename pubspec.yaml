@@ -44,6 +44,7 @@ dependencies:
   flutter_typeahead: ^3.2.4
   lottie: ^1.2.1
   custom_pop_up_menu: ^1.2.2
+  checkbox_grouped: ^1.7.1
 
 dev_dependencies:
   flutter_lints: ^1.0.0

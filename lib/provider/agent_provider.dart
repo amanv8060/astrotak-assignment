@@ -17,8 +17,19 @@ class AgentProvider extends ChangeNotifier {
   ///Stores the _lastSearchedString , to optimize searching of items
   String _lastSearched = "";
 
+  /// flag to show loading in progress
   bool loading = false;
+
+  ///Stores error message if there is any error
   String? error;
+
+  ///Stores on what filters the current list is filtered
+  ///Structure
+  ///{
+  ///"language" : List<String>
+  ///"skills" : List<String>
+  ///}
+  Map<String, dynamic> filterParams = {};
 
   /// List of [Agent] to be utilized by UI
   List<Agent> agents = List.empty();
@@ -36,7 +47,8 @@ class AgentProvider extends ChangeNotifier {
   //Todo: Write this function
   /// This functions updates [agents] according to the option selected by a user ,
   /// If user resets the option , we reinitialize the list , else we sort accordingly
-  updateQueryParams(Map<String, dynamic> params) async {
+  filterAgents(Map<String, dynamic> params) async {
+    filterParams = params;
     if (params.isEmpty) {
       refreshList();
       notifyListeners();

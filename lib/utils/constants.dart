@@ -28,4 +28,24 @@ class Constants {
 
   static const String defaultAgentImage =
       "http://www.ll-mm.com/images/placeholders/team-placeholder.jpg";
+
+  /*
+  Filter constants
+   */
+
+  /// Skills availble in the api response
+  static const List<String> skills = [
+    "Astrology",
+    "Vastu",
+    "Numerology",
+    "Palmistry",
+    "Tarot",
+    "Falit Jyotish",
+    "Kundali Grah Dosh",
+    "Vedic Astrology",
+    "Face Reading",
+  ];
+
+  /// Language availble in the api response
+  static const List<String> languages = ["Hindi", "English"];
 }

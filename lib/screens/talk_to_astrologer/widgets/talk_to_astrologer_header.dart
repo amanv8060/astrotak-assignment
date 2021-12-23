@@ -6,6 +6,8 @@ import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'agent_filter.dart';
+
 class TalkToAstrologerHeader extends StatefulWidget {
   const TalkToAstrologerHeader({Key? key}) : super(key: key);
 
@@ -59,7 +61,26 @@ class _TalkToAstrologerHeaderState extends State<TalkToAstrologerHeader> {
                     height: SizeConfig.fitToHeight(20),
                     fit: BoxFit.fill,
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                    await showModalBottomSheet(
+                      context: context,
+                      isDismissible: true,
+                      isScrollControlled: true,
+                      enableDrag: false,
+                      backgroundColor: Colors.transparent,
+                      builder: (ctx) {
+                        return ChangeNotifierProvider.value(
+                          value: Provider.of<AgentProvider>(context),
+                          child: Consumer<AgentProvider>(
+                            builder: (context, _provider, _) {
+                              return AgentFilter(
+                                  filterParams: _provider.filterParams);
+                            },
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
                 CustomPopupMenu(
                     child: Image.asset(
