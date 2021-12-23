@@ -33,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    _pages = [_panchangScreen, _talkToAstrologer, _reports, _askQuestion];
+    _pages = [_panchangScreen, _talkToAstrologer, _askQuestion, _reports];
   }
 
   @override
