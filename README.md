@@ -1,8 +1,15 @@
-### Steps to run :
+## India-Today Flutter Developer Assignment
+
+## Run app 
+
+Download apk from [here](https://github.com/amanv8060/astrotak-assignment/tree/main/apk)
+
+### Steps to build and run :
 
 1. Clone repo `git clone https://github.com/amanv8060/astrotak-assignment`
 2. cd astrotak-assignment
 3. run `flutter pub get`
+4. run `flutter run`
 
 Additional Steps (to contribute)
 
@@ -10,7 +17,7 @@ Additional Steps (to contribute)
 5. cp pre-committ .git/hooks/
 
 
-Project Structure:
+Quick Overview of Project:
 ```
 📦lib
  ┣ 📂models
