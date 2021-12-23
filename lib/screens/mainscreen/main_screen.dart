@@ -15,15 +15,14 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int pageIndex = 0;
 
   /*
   Screens
    */
-  final PanchangScreen _panchangScreen =
-      const PanchangScreen(key: PageStorageKey("panchangScreen"));
-  final TalkToAstrologer _talkToAstrologer =
-      const TalkToAstrologer(key: PageStorageKey("astrologerScreen"));
+  final PanchangScreen _panchangScreen = const PanchangScreen();
+  final TalkToAstrologer _talkToAstrologer = const TalkToAstrologer();
   final Reports _reports = const Reports();
   final AskQuestion _askQuestion = const AskQuestion();
 
@@ -42,6 +41,7 @@ class _MainScreenState extends State<MainScreen> {
     //initializing size config for entire App
     SizeConfig().init(context);
     return Scaffold(
+      key: _scaffoldKey,
       appBar: CustomAppBar(context),
       drawer: Drawer(
         child: SafeArea(
@@ -59,10 +59,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
-      body: PageStorage(
-        child: _pages[pageIndex],
-        bucket: bucket,
-      ),
+      body: _pages[pageIndex],
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,
         showSelectedLabels: true,
