@@ -9,5 +9,5 @@ void main() async {
   await dotenv.load(fileName: "assets/.env");
   setupLocator();
 
-  runApp(AstroTak());
+  runApp(const AstroTak());
 }

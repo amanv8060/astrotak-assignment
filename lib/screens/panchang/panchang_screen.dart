@@ -23,6 +23,7 @@ class _PanchangScreenState extends State<PanchangScreen> {
   @override
   void initState() {
     super.initState();
+    _panchangProvider.getPanchang();
   }
 
   @override

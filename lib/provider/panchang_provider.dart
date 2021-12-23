@@ -2,12 +2,11 @@ import 'package:app/models/api_response.dart';
 import 'package:app/models/panchang.dart';
 import 'package:app/models/place_model.dart';
 import 'package:app/repository/panchang_repository.dart';
-import 'package:app/repository/place_repository.dart';
-import 'package:app/utils/logging/custom_logger.dart';
 import 'package:flutter/cupertino.dart';
 
 class PanchangProvider extends ChangeNotifier {
-  Place? _selectedPlace;
+  Place? _selectedPlace = Place.fromJson(
+      {"placeName": "Delhi, India", "placeId": "ChIJL_P_CXMEDTkRw0ZdG-0GVvw"});
 
   //Setting default DateTime as of now;
   DateTime _selectedDate = DateTime.now();

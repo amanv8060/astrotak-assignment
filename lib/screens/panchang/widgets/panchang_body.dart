@@ -24,7 +24,7 @@ class PanchangBody extends StatelessWidget {
             child: Center(
                 child: Text(
               _provider.error!,
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
             )),
           );
         }
@@ -39,6 +39,11 @@ class PanchangBody extends StatelessWidget {
             ),
           );
         } else {
+          if (_provider.data == null) {
+            return const Center(
+              child: Text("No data : ( "),
+            );
+          }
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [

@@ -11,6 +11,6 @@ class AstroTak extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'AstroTak',
         theme: AppTheme.globalTheme,
-        home: MainScreen());
+        home: const MainScreen());
   }
 }

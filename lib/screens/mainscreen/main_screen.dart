@@ -6,7 +6,6 @@ import 'package:app/screens/panchang/panchang_screen.dart';
 import 'package:app/screens/reports/reports.dart';
 import 'package:app/screens/talktoastro/talk_to_astro_screen.dart';
 import 'package:app/utils/size_config.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -64,7 +63,9 @@ class _MainScreenState extends State<MainScreen> {
                 items: getBottomNavBarItems(),
                 currentIndex: _provider.pageIndex,
                 selectedItemColor: Colors.amber[800],
-                onTap: (index) {},
+                onTap: (index) {
+                  _provider.update(index);
+                },
                 type: BottomNavigationBarType.fixed,
               ),
             );

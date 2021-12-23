@@ -1,5 +1,4 @@
 import 'package:app/utils/size_config.dart';
-import 'package:app/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class TextRow extends StatelessWidget {

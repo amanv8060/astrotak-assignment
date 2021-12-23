@@ -30,9 +30,6 @@ class _DateLocationPickerState extends State<DateLocationPicker> {
     _dateController.text =
         DateFormat("d MMMM , y").format(_selectedDate).toString();
     _placeController.text = _selectedPlace.placeName;
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      update();
-    });
     super.initState();
   }
 
