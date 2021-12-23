@@ -1,6 +1,6 @@
 ## India-Today Flutter Developer Assignment
 
-## Run app 
+### Run app 
 
 Download apk from [here](https://github.com/amanv8060/astrotak-assignment/tree/main/apk)
 
