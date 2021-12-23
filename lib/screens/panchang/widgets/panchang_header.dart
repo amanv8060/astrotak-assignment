@@ -1,5 +1,4 @@
 import 'package:app/utils/size_config.dart';
-import 'package:app/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class PanchangHeader extends StatelessWidget {
@@ -33,6 +32,9 @@ class PanchangHeader extends StatelessWidget {
           "our on the critical dates we bring you the daily panchang.",
           textAlign: TextAlign.justify,
           style: TextStyle(color: Color(0xffa0a0a0)),
+        ),
+        SizedBox(
+          height: SizeConfig.fitToHeight(8),
         )
       ],
     );

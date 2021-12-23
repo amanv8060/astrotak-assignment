@@ -21,4 +21,11 @@ class Constants {
 
   /// connection timeout duration in milliseconds
   static const int httpConnectTimeout = 5000;
+
+  /*
+  Image Constants
+   */
+
+  static const String defaultAgentImage =
+      "http://www.ll-mm.com/images/placeholders/team-placeholder.jpg";
 }

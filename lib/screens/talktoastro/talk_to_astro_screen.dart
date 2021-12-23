@@ -10,10 +10,8 @@ class TalkToAstro extends StatefulWidget {
 class _TalkToAstroState extends State<TalkToAstro> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("Astro screen"),
-      ),
+    return ListView(
+      children: [],
     );
   }
 }

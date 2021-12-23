@@ -25,6 +25,7 @@ class PanchangProvider extends ChangeNotifier {
   Future<void> getPanchang() async {
     loading = true;
     notifyListeners();
+
     if (_selectedPlace == null) {
       error = "Please Select Place";
       loading = false;

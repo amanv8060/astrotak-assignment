@@ -9,11 +9,12 @@ class AppTheme {
   static const Color toastColor = Color(0xff303030);
   static const Color primaryColor = Color(0xffe4933e);
   static const Color greyColor1 = Color(0xffcccccc);
+  static const Color blueColor = Color(0xff98a3d5);
 
   static final ThemeData globalTheme = ThemeData(
     primaryColor: primaryColor,
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        unselectedLabelStyle: TextStyle(color: greyColor),
+        unselectedLabelStyle: TextStyle(color: greyColor, fontSize: 6.0),
         selectedLabelStyle: TextStyle(color: Color(0xffe4933e))),
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(

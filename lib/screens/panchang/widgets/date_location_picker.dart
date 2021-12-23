@@ -1,10 +1,11 @@
 import 'package:app/models/place_model.dart';
+import 'package:app/provider/panchang_provider.dart';
 import 'package:app/provider/place_provider.dart';
 import 'package:app/utils/size_config.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:intl/intl.dart';
-import 'package:textfield_search/textfield_search.dart';
+import 'package:provider/provider.dart';
 
 class DateLocationPicker extends StatefulWidget {
   const DateLocationPicker({Key? key}) : super(key: key);
@@ -14,16 +15,24 @@ class DateLocationPicker extends StatefulWidget {
 }
 
 class _DateLocationPickerState extends State<DateLocationPicker> {
-  PlaceProvider _placeProvider = PlaceProvider();
+  /// To fetch Places
+  final PlaceProvider _placeProvider = PlaceProvider();
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _placeController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
 
+  //setting default place to delhi , for now later on we can user location
+  Place _selectedPlace = Place.fromJson(
+      {"placeName": "Delhi, India", "placeId": "ChIJL_P_CXMEDTkRw0ZdG-0GVvw"});
+
   @override
   void initState() {
-    _placeProvider.getPlaces("Delhi");
     _dateController.text =
         DateFormat("d MMMM , y").format(_selectedDate).toString();
+    _placeController.text = _selectedPlace.placeName;
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      update();
+    });
     super.initState();
   }
 
@@ -40,13 +49,14 @@ class _DateLocationPickerState extends State<DateLocationPicker> {
         _dateController.text =
             DateFormat("d MMMM , y").format(_selectedDate).toString();
       });
+      update();
     }
   }
 
-  Future<List<Place>> getPlaces() async {
-    List<Place> _places = await _placeProvider.getPlaces(_placeController.text);
-
-    return _places;
+  ///Updates the Panchang Screen with the current values
+  void update() async {
+    Provider.of<PanchangProvider>(context, listen: false)
+        .setData(_selectedDate, _selectedPlace);
   }
 
   @override
@@ -71,8 +81,9 @@ class _DateLocationPickerState extends State<DateLocationPicker> {
                     onTap: () => _selectDate(context),
                     child: TextFormField(
                       style:
-                          const TextStyle(fontSize: 18, color: Colors.black87),
+                          const TextStyle(fontSize: 16, color: Colors.black87),
                       textAlign: TextAlign.start,
+                      textAlignVertical: TextAlignVertical.center,
                       cursorColor: Colors.black,
                       enabled: false,
                       controller: _dateController,
@@ -93,48 +104,37 @@ class _DateLocationPickerState extends State<DateLocationPicker> {
             ),
             Row(
               children: [
-                Expanded(flex: 3, child: Text("Location :")),
-                // Expanded(
-                //   flex: 7,
-                //   // child:
-                //   // DropdownSearch<Place>(
-                //   //   onFind: (String? filter) async {
-                //   //     return _placeProvider.getPlaces(filter ?? "");
-                //   //   },
-                //   //   onChanged: (Place? data) {
-                //   //     print(data);
-                //   //   },
-                //   //   showSearchBox: true,
-                //   //   mode: Mode.MENU,
-                //   //                 )
-                //   // )
-                //   //
-                //   //
-                //   //
-                //   //     TextFieldSearch(
-                //   //   textStyle:
-                //   //       const TextStyle(fontSize: 18, color: Colors.black87),
-                //   //   controller: _placeController,
-                //   //   future: () {
-                //   //     return getPlaces();
-                //   //   },
-                //   //   decoration: const InputDecoration(
-                //   //     fillColor: Colors.white,
-                //   //     enabledBorder: InputBorder.none,
-                //   //     border: InputBorder.none,
-                //   //     filled: true,
-                //   //   ),
-                //   // ),
-                //   // TextFormField(
-                //   //   style:
-                //   //   textAlign: TextAlign.start,
-                //   //   enabled: true,
-                //   //   keyboardType: TextInputType.text,
-                //   //   controller: _placeController,
-                //   //
-                //   // ),
-                // ),
-                //
+                const Expanded(flex: 3, child: Text("Location :")),
+                Expanded(
+                  flex: 7,
+                  child: TypeAheadField(
+                    textFieldConfiguration: TextFieldConfiguration(
+                      controller: _placeController,
+                      decoration: const InputDecoration(
+                        fillColor: Colors.white,
+                        enabledBorder: InputBorder.none,
+                        border: InputBorder.none,
+                        filled: true,
+                      ),
+                    ),
+                    suggestionsCallback: (pattern) async {
+                      return await _placeProvider
+                          .getPlaces(_placeController.text);
+                    },
+                    itemBuilder: (context, Place suggestion) {
+                      return ListTile(
+                        title: Text(suggestion.placeName),
+                      );
+                    },
+                    onSuggestionSelected: (Place suggestion) {
+                      setState(() {
+                        _selectedPlace = suggestion;
+                        _placeController.text = suggestion.placeName;
+                      });
+                      update();
+                    },
+                  ),
+                )
               ],
             ),
           ],

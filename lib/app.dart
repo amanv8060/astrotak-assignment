@@ -7,7 +7,10 @@ class AstroTak extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,
-        title: 'AstroTak', theme: AppTheme.globalTheme, home: MainScreen());
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'AstroTak',
+        theme: AppTheme.globalTheme,
+        home: MainScreen());
   }
 }

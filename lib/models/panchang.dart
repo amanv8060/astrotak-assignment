@@ -29,7 +29,7 @@ class Panchang with EquatableMixin {
     required this.panchangYog,
     required this.vikramSamvat,
     required this.shakaSamvat,
-    required this.vkramSamvatName,
+    required this.vikramSamvatName,
     required this.shakaSamvatName,
     required this.dishaShool,
     required this.dishaShoolRemedies,
@@ -61,7 +61,7 @@ class Panchang with EquatableMixin {
   String panchangYog;
   int vikramSamvat;
   int shakaSamvat;
-  String vkramSamvatName;
+  String vikramSamvatName;
   String shakaSamvatName;
   String dishaShool;
   String dishaShoolRemedies;
@@ -93,7 +93,7 @@ class Panchang with EquatableMixin {
         panchangYog: json["panchang_yog"],
         vikramSamvat: json["vikram_samvat"],
         shakaSamvat: json["shaka_samvat"],
-        vkramSamvatName: json["vkram_samvat_name"],
+        vikramSamvatName: json["vkram_samvat_name"],
         shakaSamvatName: json["shaka_samvat_name"],
         dishaShool: json["disha_shool"],
         dishaShoolRemedies: json["disha_shool_remedies"],
@@ -126,7 +126,7 @@ class Panchang with EquatableMixin {
         "panchang_yog": panchangYog,
         "vikram_samvat": vikramSamvat,
         "shaka_samvat": shakaSamvat,
-        "vkram_samvat_name": vkramSamvatName,
+        "vkram_samvat_name": vikramSamvatName,
         "shaka_samvat_name": shakaSamvatName,
         "disha_shool": dishaShool,
         "disha_shool_remedies": dishaShoolRemedies,
@@ -163,7 +163,7 @@ class Panchang with EquatableMixin {
         panchangYog,
         vikramSamvat,
         shakaSamvat,
-        vkramSamvatName,
+        vikramSamvatName,
         shakaSamvatName,
         dishaShool,
         dishaShoolRemedies,

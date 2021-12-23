@@ -121,6 +121,14 @@ class Agent with EquatableMixin {
         availability
       ];
 
+  String getFormattedName() {
+    if (namePrefix == null || namePrefix!.isEmpty) {
+      return firstName + " " + lastName;
+    } else {
+      return namePrefix! + " " + firstName + " " + lastName;
+    }
+  }
+
   @override
   bool? get stringify => true;
 }

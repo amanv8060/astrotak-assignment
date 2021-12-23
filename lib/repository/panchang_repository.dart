@@ -13,6 +13,6 @@ class PanchangRepository {
   Future<ApiResponse> getPanchang(Map<String, dynamic> queryParams) async {
     return RequestHelper.callAPI(
         RequestType.POST, '/horoscope/daily/panchang', 200,
-        queryParams: queryParams);
+        data: queryParams);
   }
 }

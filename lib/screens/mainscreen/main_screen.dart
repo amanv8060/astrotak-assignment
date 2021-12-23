@@ -1,16 +1,14 @@
-import 'package:app/models/panchang.dart';
+import 'package:app/provider/main_screen_provider.dart';
 import 'package:app/screens/ask_question/ask_question.dart';
 import 'package:app/screens/mainscreen/widgets/app_bar.dart';
 import 'package:app/screens/mainscreen/widgets/bottom_navigation_items.dart';
 import 'package:app/screens/panchang/panchang_screen.dart';
-import 'package:app/screens/profile/profile_screen.dart';
 import 'package:app/screens/reports/reports.dart';
 import 'package:app/screens/talktoastro/talk_to_astro_screen.dart';
 import 'package:app/utils/size_config.dart';
-import 'package:app/utils/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -20,56 +18,57 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int currentIndex = 0;
+  final MainScreenProvider _mainScreenProvider = MainScreenProvider();
 
   //declaring classes
-  final PanchangScreen _panchangScreen = const PanchangScreen();
-  final TalkToAstro _talkToAstro = const TalkToAstro();
-  final Reports _reports = const Reports();
-  final AskQuestion _askQuestion = const AskQuestion();
-  late List<Widget> _pages;
-
-  @override
-  void initState() {
-    _pages = [_panchangScreen, _talkToAstro, _askQuestion, _reports];
-    super.initState();
-  }
+  final List<Widget> _pages = const [
+    PanchangScreen(),
+    TalkToAstro(),
+    Reports(),
+    AskQuestion()
+  ];
 
   @override
   Widget build(BuildContext context) {
     //initializing size config for entire App
     SizeConfig().init(context);
-    return Scaffold(
-      appBar: CustomAppBar(context),
-      drawer: Drawer(
-        child: SafeArea(
-          child: Column(
-            children: [
-              Image.asset(
-                "assets/logo.png",
-                width: SizeConfig.fitToWidth(50),
-                height: SizeConfig.fitToHeight(50),
+    return ChangeNotifierProvider.value(
+        value: _mainScreenProvider,
+        child: Consumer<MainScreenProvider>(
+          builder: (context, _provider, _) {
+            return Scaffold(
+              appBar: CustomAppBar(context),
+              drawer: Drawer(
+                child: SafeArea(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        "assets/logo.png",
+                        width: SizeConfig.fitToWidth(50),
+                        height: SizeConfig.fitToHeight(50),
+                      ),
+                      const Center(
+                        child: Text("Not yet implemented"),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              const Center(
-                child: Text("Not yet implemented"),
+              body: Consumer<MainScreenProvider>(
+                  builder: (context, _provider, _) {
+                return _pages[_provider.pageIndex];
+              }),
+              bottomNavigationBar: BottomNavigationBar(
+                showUnselectedLabels: true,
+                showSelectedLabels: true,
+                items: getBottomNavBarItems(),
+                currentIndex: _provider.pageIndex,
+                selectedItemColor: Colors.amber[800],
+                onTap: (index) {},
+                type: BottomNavigationBarType.fixed,
               ),
-            ],
-          ),
-        ),
-      ),
-      body: _pages[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: true,
-        showSelectedLabels: true,
-        items: getBottomNavBarItems(),
-        currentIndex: currentIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-      ),
-    );
+            );
+          },
+        ));
   }
 }

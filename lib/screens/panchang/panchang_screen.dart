@@ -16,21 +16,22 @@ class PanchangScreen extends StatefulWidget {
 class _PanchangScreenState extends State<PanchangScreen> {
   final PanchangProvider _panchangProvider = PanchangProvider();
 
+  final PanchangHeader _panchangHeader = const PanchangHeader();
+  final DateLocationPicker _dateLocationPicker = const DateLocationPicker();
+  final PanchangBody _panchangBody = const PanchangBody();
+
   @override
   void initState() {
     super.initState();
-    _panchangProvider.getPanchang();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: SizeConfig.fitToWidth(16)),
-      child: ChangeNotifierProvider.value(
-        value: _panchangProvider,
-        child: Column(
-          children: [const PanchangHeader(), DateLocationPicker()],
-        ),
+    return ChangeNotifierProvider.value(
+      value: _panchangProvider,
+      child: ListView(
+        padding: EdgeInsets.symmetric(horizontal: SizeConfig.fitToWidth(16)),
+        children: [_panchangHeader, _dateLocationPicker, _panchangBody],
       ),
     );
   }
