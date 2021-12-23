@@ -2,6 +2,7 @@ import 'package:app/screens/mainscreen/main_screen.dart';
 import 'package:app/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
+///Root app
 class AstroTak extends StatelessWidget {
   const AstroTak({Key? key}) : super(key: key);
 

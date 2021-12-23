@@ -13,9 +13,6 @@ class AppTheme {
 
   static final ThemeData globalTheme = ThemeData(
     primaryColor: primaryColor,
-    // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    //     unselectedLabelStyle: TextStyle(color: greyColor, fontSize: 8.0 ),
-    //     selectedLabelStyle: TextStyle(color: Color(0xffe4933e))),
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
       elevation: 0,
